@@ -3,6 +3,8 @@ from IPython.display import Markdown as md, display
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
+os.makedirs("loan_charts", exist_ok=True)
 
 COLS = ["Credit Policy","Purpose of Loan","Interest Rate","Installment","Annual Income (raw)",
 "Debt to Income","FICO Score","Days with Credit","Revolving Balances","Revolving Limits",
@@ -82,6 +84,7 @@ plt.bar(summary_fico["FICO Tier"], summary_fico["Default Rate %"])
 plt.title("Default Loans Compared to Applicants FICO")
 plt.xlabel("FICO Tiers")
 plt.ylabel("% of Loans Not Paid")
+plt.savefig("loan_charts/chart1.png")
 plt.show()
 
 # 1. SUMMARY()
@@ -103,6 +106,7 @@ plt.bar(summary_income["Income Tier"], summary_income["Default Rate %"])
 plt.title("Default Loans Compared to Applicants Income")
 plt.xlabel("Income Tiers")
 plt.ylabel("% of Loans Not Paid")
+plt.savefig("loan_charts/chart2.png")
 plt.show()
 
 # 2.2
@@ -120,6 +124,7 @@ plt.bar(summary_income_to_balances["Income Tier"], summary_income_to_balances["A
 plt.title("Average Credit Card Balances to Income")
 plt.xlabel("Income Tiers")
 plt.ylabel("Average Credit Card Balances")
+plt.savefig("loan_charts/chart2-2.png")
 plt.show()
 
 # 2.2 SUMMARY()
@@ -143,6 +148,7 @@ plt.bar(summary_revolving_balances["Credit Balance Tier"], summary_revolving_bal
 plt.title("Default Loans Compared to Applicants Outstanding Credit Balances")
 plt.xlabel("Credit Balance Tiers")
 plt.ylabel("% of Loans Not Paid")
+plt.savefig("loan_charts/chart3.png")
 plt.show()
 
 # 3. Summary()
@@ -163,6 +169,7 @@ plt.bar(summary_del["Delinquent (Last 24 months)"], summary_del["Default Rate %"
 plt.title("Default Loans Compared to Applicants Delinquencies In The Last 24 Months.")
 plt.xlabel("Delinquency Count (last 24 months)")
 plt.ylabel("% of Loans Not Paid")
+plt.savefig("loan_charts/chart4.png")
 plt.show()
 
 display(df["Delinquent (Last 24 months)"].value_counts().sort_index().reset_index())
@@ -194,6 +201,7 @@ plt.title("Default Rate by Delinquencies and Public Records")
 plt.xlabel("Delinquency Count (last 24 months)")
 plt.ylabel("% of Loans Not Paid")
 plt.legend(title="Public Record")
+plt.savefig("loan_charts/chart5.png")
 plt.show()
 
 # 5. Summary()
@@ -214,6 +222,7 @@ plt.title("Which Types of Loans Are More Likely To Default?")
 plt.xlabel("Purpose of Loan / Loan Type")
 plt.xticks(rotation=45, ha="right")
 plt.ylabel("% of Loans Not Paid")
+plt.savefig("loan_charts/chart6.png")
 plt.show()
 
 # 6. Summary()
